@@ -1,4 +1,4 @@
-# Runner-AS
+# DinoRunner-AS
 A tiny/scuffed endless runner to learn the basics of ActionScript before Adobe Flash is completely put to rest.
 
 
@@ -18,11 +18,12 @@ I just spent a couple days screwing around with making a scuffed version of Chro
 * Setup **playerglobal.swc**
   * Download from https://www.adobe.com/support/flashplayer/debug_downloads.html
   * place in **frameworks\libs\player\31.0**
-  * version numbers didn't match up, but whatever
+  * my version numbers didn't match up, but I just renamed files to match and it worked lol ...
 * ```ant -f installer.xml -Dair.sdk.version=2.6```
 
 
 ## References
+* ActionScript 3 API Reference - https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/
 * https://riptutorial.com/actionscript-3
 * https://gamedevelopment.tutsplus.com/articles/how-to-learn-flash-and-as3-for-game-development--gamedev-636
 * http://edutechwiki.unige.ch/en/ActionScript_3_tutorials
