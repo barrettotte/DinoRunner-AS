@@ -1,6 +1,9 @@
-# DinoRunner-AS
-A simple clone of Chrome's Dino Runner to learn the basics of ActionScript before Adobe Flash is put to rest.
+# Runner-AS
+A simple endless runner based to learn the basics of ActionScript before Adobe Flash is completely put to rest.
 
+
+This is meant to be a scuffed version of Chrome's dino runner game.
+I've never used ActionScript or Flash so I figured it'd be a shame if it died without ever learning about it.
 
 
 ## Setting Up ActionScript Environment

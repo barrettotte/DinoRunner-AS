@@ -1,18 +1,29 @@
+// Program entry
+
 package dinorunner{
 
+    import flash.display.Bitmap;
     import flash.display.Sprite;
     import flash.display.Stage;
     import flash.events.Event;
     import flash.events.KeyboardEvent;
     import flash.text.TextField;
 
-    import dinorunner.util.Metrics;
+    import dinorunner.ui.Metrics;
+    import dinorunner.ui.Scoreboard;
 
 
     public class Main extends Sprite{
 
+        [Embed(source="assets/Cactus.png")]
+        private var Cactus: Class;
+
+        [Embed(source="assets/Player.png")]
+        private var Player: Class;
+
+
         // TODO: Player class with states ?
-        private var player: Sprite;
+        private var player: Bitmap;
 
         // private var moveUp: Boolean;
         // private var moveDown: Boolean;
@@ -26,11 +37,23 @@ package dinorunner{
         private var jumpVelocity: Number;
         private var step: uint = 5;
 
+        private var metrics: Metrics;
+        private var scoreboard: Scoreboard;
+
 
         public function Main(){
+            metrics = new Metrics(this);
+            scoreboard = new Scoreboard(this);
 
-            var metrics: Metrics = new Metrics(this);
-            addChild(metrics);
+            var cactus: Bitmap = new Cactus();
+            cactus.x = 100;
+            cactus.y = stage.stageHeight - (cactus.height + 25);
+            addChild(cactus);
+
+            player = new Player();
+            player.x = 200;
+            player.y = 100;
+            addChild(player);
 
             var tf: TextField = new TextField();
             tf.text = "Hello Flash";
@@ -38,10 +61,10 @@ package dinorunner{
             tf.y = 10;
             addChild(tf);
 
-            player = createPlayerSprite(0xFFFF00);
-            player.x = 200;
-            player.y = 100;
-            addChild(player);
+            // player = createPlayerSprite(0xFFFF00);
+            // player.x = 200;
+            // player.y = 100;
+            // addChild(player);
 
             // Register event listeners
             stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
@@ -81,6 +104,12 @@ package dinorunner{
                 player.y -= jumpVelocity;
                 jumpVelocity -= gravity;
             }
+
+
+            // if(scoreboard.getScore() > 100){
+            //     scoreboard.kill();
+            // }
+
         }
 
         // Create player sprite manually

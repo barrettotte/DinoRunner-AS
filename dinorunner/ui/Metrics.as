@@ -1,4 +1,6 @@
-package dinorunner.util{
+// Simple overlay to toggle performance metrics (FPS and memory usage)
+
+package dinorunner.ui{
     
     import flash.display.Sprite;
     import flash.events.Event;
@@ -21,7 +23,7 @@ package dinorunner.util{
 
         private var fpsMax: int;
         private var frameTime: int;
-        private var fpsList: Array;
+        private var fpsData: Array;
 
 
         public function Metrics(parent: DisplayObject){
@@ -29,7 +31,7 @@ package dinorunner.util{
             parent.stage.addChild(this);
         }
 
-        public function onAddToStage(e: Event): void{
+        private function onAddToStage(e: Event): void{
             visible = false;
             x = stage.stageWidth - w;
             y = 0;
@@ -49,9 +51,10 @@ package dinorunner.util{
             memUsage.y = 35;
             addChild(memUsage);
 
-            fpsList = new Array();
+            fpsData = new Array();
             fpsMax = stage.frameRate;
 
+            // register events
             addEventListener(Event.ENTER_FRAME, onEnterFrame);
             stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
             stage.addEventListener(Event.RESIZE, onResize);
@@ -72,24 +75,23 @@ package dinorunner.util{
         }
 
         private function calc(): void{
-            memUsage.text = 'MEM: ' + Number(System.totalMemory / 1024 / 1024).toFixed(2) + ' Mb';
             var current: int = 1000 / (getTimer() - frameTime);
             fpsCur.text = 'CUR: ' + String(current) + ' FPS';
+            memUsage.text = 'MEM: ' + Number(System.totalMemory / 1024 / 1024).toFixed(2) + ' MB';
             
             frameTime = getTimer();
-            fpsList.push(current);
+            fpsData.push(current);
 
-            if(fpsList.length >= fpsMax){
+            if(fpsData.length >= fpsMax){
                 var avg: int = 0;
 
-                for(var i: int = 0; i < fpsList.length; i++){
-                    avg += fpsList[i];
+                for(var i: int = 0; i < fpsData.length; i++){
+                    avg += fpsData[i];
                 }
-                avg /= fpsList.length;
-                fpsAvg.text = 'AVG: ' + int(avg) + ' / ' + fpsMax + ' FPS';
-                fpsList = new Array();
+                avg /= fpsData.length;
+                fpsAvg.text = 'AVG: ' + int(avg) + ' FPS';
+                fpsData = new Array();
             }
         }
-
     }
 }
