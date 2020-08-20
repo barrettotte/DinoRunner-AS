@@ -1,9 +1,9 @@
 # Runner-AS
-A tiny endless runner to learn the basics of ActionScript before Adobe Flash is completely put to rest.
+A tiny/scuffed endless runner to learn the basics of ActionScript before Adobe Flash is completely put to rest.
 
 
 I've never used ActionScript or Flash so I figured it'd be a shame if it died without ever learning a little about it.
-I just wanted to spend a couple days screwing around with making a scuffed version of Chrome's dino runner game.
+I just spent a couple days screwing around with making a scuffed version of Chrome's dino runner game.
 
 
 ![screenshot](docs/screenshot.png)
