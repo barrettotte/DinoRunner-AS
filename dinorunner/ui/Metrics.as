@@ -71,10 +71,10 @@ package dinorunner.ui{
         }
 
         private function onEnterFrame(e: Event): void{
-            calc();
+            calculate();
         }
 
-        private function calc(): void{
+        private function calculate(): void{
             var current: int = 1000 / (getTimer() - frameTime);
             fpsCur.text = 'CUR: ' + String(current) + ' FPS';
             memUsage.text = 'MEM: ' + Number(System.totalMemory / 1024 / 1024).toFixed(2) + ' MB';

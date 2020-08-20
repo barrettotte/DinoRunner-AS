@@ -32,7 +32,7 @@ package dinorunner.ui{
             scoreTf.x = 0;
             scoreTf.y = 0;
             addChild(scoreTf);
-            scoreTf.text = 'Score: ' + (this.score);
+            scoreTf.text = 'Score: ' + (score);
 
             x = (stage.stageWidth / 2) - (scoreTf.width / 2);
             y = 10;
@@ -42,7 +42,7 @@ package dinorunner.ui{
 
         private function onEnterFrame(e: Event): void{
             if(isAlive){
-                scoreTf.text = 'Score: ' + Math.floor((++this.score) / 10);
+                scoreTf.text = 'Score: ' + Math.floor((++score) / 10);
             }
         }
 
@@ -52,6 +52,11 @@ package dinorunner.ui{
 
         public function kill(): void{
             isAlive = false;
+        }
+
+        public function reset(): void{
+            isAlive = true;
+            score = 0;
         }
     }
 }
